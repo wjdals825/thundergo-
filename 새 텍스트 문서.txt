@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>게임방법</title>
+        <link rel="stylesheet" href="howtoplay.css">
+    </head>
+    <body>
+        <fieldset>
+            <legend align="center"> 게임 방법 </legend>
+            <div class="contents" align="center">
+                <br>
+                1. 미림이와 함께 나올 퀴즈를 공부해요! <br>
+                2. 문제를 보고 맞는 답을 찾아 고르면 성공!<br>&nbsp;&nbsp;
+                   틀린 답을 찾으면 폭포 밑으로 떨어지니 주의해주세요!<br>
+                3. 문제를 모두 맞춰 미림이와 가족들을 무사히 집에 도착하게 해주세요!
+            </div> 
+        </fieldset>
+        <div class="button">
+            <button>게임시작</button>
+        </div>
+        
+    </body>
+</html>
