@@ -1,0 +1,38 @@
+/* 배경 */
+input {
+position: relative;
+width: 1440px;
+height: 1024px;
+background: #B4E1F7;
+}
+
+/* 게임 시작 */
+.btn_start{
+position: absolute;
+width: 240px;
+height: 89px;
+left: 370px;
+top: 732px;
+
+font-family: TmonMonsoriOTF;
+font-style: normal;
+font-weight: 900;
+font-size: 48px;
+line-height: 60px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
+}
+
+/* 로고 */
+main{
+position: absolute;
+width: 546px;
+height: 546px;
+left: 447px;
+top: 72px;
+
+background: rgba(255, 169, 164, 0.68);
+}
