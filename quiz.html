@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>해피CGI</title>
+
+<script language="javascript">
+var delay=100; //시간설정
+var correctAnswers=new Array("O","X","O","c","d");  //정답
+
+var q_num=1;
+var timer;
+var layer;
+var clock=delay;
+var score=0;
+
+function show_question(){
+    if (layer=eval("document.all.question"+q_num)){
+        layer.style.display="inline";
+        document.all.timeLeft.innerHTML=clock;
+        hide_question();
+    } else {
+        document.all.timeLeft.innerHTML=0;
+        document.all.quizScore.innerHTML="당신은 "+(q_num-1)+"문제중 "+score+"개를 맞췄습니다.";
+        document.all.quizScore.style.display="inline";
+    }
+}
+
+function hide_question(){
+    if (clock>0) {
+        document.all.timeLeft.innerHTML=clock;
+        clock--;
+        timer=setTimeout("hide_question()",1000);
+    } else {
+        clearTimeout(timer);
+        document.all.answerBoard.innerHTML="&nbsp;";
+        clock=delay;
+        layer.style.display="none";
+        q_num++;
+        show_question();
+    }
+}
+
+function check_answer(answer){
+    if (correctAnswers[q_num-1]==answer){
+        score++;
+        document.all.answerBoard.innerHTML="<font color=blue><b>정답입니다.</b></font>";
+    } else {
+        document.all.answerBoard.innerHTML="<font color=red><b>땡! 틀렸습니다.</b></font>";
+    }
+    clock=0;
+    clearTimeout(timer);
+    timer=setTimeout("hide_question()",700);
+}
+
+window.onload=show_question;
+</script>
+</head>
+
+<body>
+
+제한시간 : <B><span id="timeLeft"></span></B> 초<br>
+<br>
+<div id="answerBoard">&nbsp;</div>
+<br>
+
+<div id="question1" style="display:none">
+    <b>1. 귀는 귀인데 발 달린 귀는 당나귀이다.</b><br>
+    <a href="javascript:void(0)" onclick="check_answer('O')">(O)  , </a>
+    <a href="javascript:void(0)" onclick="check_answer('X')">  (X) </a><br>
+</div>
+
+<div id="question2" style="display:none">
+    <b>2. 깍으면 깍을수록 커지는 것은 인심이다.</b><br>
+    <a href="javascript:void(0)" onclick="check_answer('O')">(O)  , </a>
+    <a href="javascript:void(0)" onclick="check_answer('X')">  (X) </a><br>
+</div>
+
+<div id="question3" style="display:none">
+    <b>3. 자동차가 사고나면 붕어빵이다.</b><br>
+    <a href="javascript:void(0)" onclick="check_answer('O')">(O)  , </a>
+    <a href="javascript:void(0)" onclick="check_answer('X')">  (X) </a><br>
+</div>
+
+<div id="question4" style="display:none">
+<b>4. 유재석이 담당하는 프로그램중 아닌것은?</b><br>
+<a href="javascript:void(0)" onclick="check_answer('a')">a) 무한도전</a><br>
+<a href="javascript:void(0)" onclick="check_answer('b')">b) 해피투게더</a><br>
+<a href="javascript:void(0)" onclick="check_answer('c')">c) 지피지기</a><br>
+<a href="javascript:void(0)" onclick="check_answer('d')">d) 진실개임</a><br>
+</div>
+
+<div id="question5" style="display:none">
+<b>5. 반지의 제왕에서 프로도의 발치수는?</b><br>
+<a href="javascript:void(0)" onclick="check_answer('a')">a) 290mm</a><br>
+<a href="javascript:void(0)" onclick="check_answer('b')">b) 300mm</a><br>
+<a href="javascript:void(0)" onclick="check_answer('c')">c) 310mm</a><br>
+<a href="javascript:void(0)" onclick="check_answer('d')">d) 글쓴이도 모른다.</a><br>
+</div>
+
+<div id="quizScore" style="display:none">
+</div>
+
+</body>
+</html>
+
