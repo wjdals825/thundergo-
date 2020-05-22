@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title>퀴즈</title>
+
+<script language="javascript">
+var delay=60; //시간설정
+var correctAnswers=new Array("O","X","O","X","O");  //정답
+
+var q_num=1;
+var timer;
+var layer;
+var clock=delay;
+var score=0;
+
+function show_question(){
+	if (layer=eval("document.all.question"+q_num)){
+		layer.style.display="inline";
+		document.all.timeLeft.innerHTML=clock;
+		hide_question();
+	} else {
+		document.all.timeLeft.innerHTML=0;
+		document.all.quizScore.innerHTML="당신은 "+(q_num-1)+"문제중 "+score+"개를 맞췄습니다.";
+		document.all.quizScore.style.display="inline";
+	}
+}
+
+function hide_question(){
+	if (clock>0) {
+		document.all.timeLeft.innerHTML=clock;
+		clock--;
+		timer=setTimeout("hide_question()",1000);
+	} else {
+		clearTimeout(timer);
+		document.all.answerBoard.innerHTML=" ";
+		clock=delay;
+		layer.style.display="none";
+		q_num++;
+		show_question();
+	}
+}
+
+function check_answer(answer){
+	if (correctAnswers[q_num-1]==answer){
+		score++;
+		document.all.answerBoard.innerHTML="<font color=blue><b>정답입니다.</b></font>";
+	} else {
+		document.all.answerBoard.innerHTML="<font color=red><b>땡! 틀렸습니다.</b></font>";
+	}
+	clock=0;
+	clearTimeout(timer);
+	timer=setTimeout("hide_question()",700);
+}
+
+window.onload=show_question;
+</script>
+</head>
+
+<body>
+
+제한시간 : <B><span id="timeLeft"></span></B> 초<br>
+<br>
+<div id="answerBoard"> </div>
+<br>
+
+<div id="question1" style="display:none"><br>
+    <legend align="center"> <b>1. 귀는 귀인데 발 달린 귀는? 당나귀이다.</b><br><br>
+	<a href="javascript:void(0)" onclick="check_answer('O')">O</a>
+	<a href="javascript:void(0)" onclick="check_answer('X')">X</a><br>
+</div>
+
+<div id="question2" style="display:none"  align="center"> 
+    <legend align="center"> <b>2. 깍으면 깍을수록 커지는 것은? </b><br><br>
+<a href="javascript:void(0)" onclick="check_answer('O')">O) 과일</a><br>
+<a href="javascript:void(0)" onclick="check_answer('X')">X) 구멍</a><br>
+</div>
+
+<legend align="center"> <div id="question3" style="display:none"  align="center">
+<b>3. 자동차가 사고나면?</b><br>
+<a href="javascript:void(0)" onclick="check_answer('O')">O) 붕어빵</a><br>
+<a href="javascript:void(0)" onclick="check_answer('X')">X) 차사고</a><br>
+</div>
+
+<legend align="center"> <div id="question4" style="display:none"  align="center">
+<b>4. 먹으면 죽는데 안 먹을 수 없는 것은? </b><br><br>
+<a href="javascript:void(0)" onclick="check_answer('O')">O) 약</a><br>
+<a href="javascript:void(0)" onclick="check_answer('X')">X) 나이</a><br>
+</div>
+
+<legend align="center"> <div id="question5" style="display:none" div class="contents" align="center">
+<b>5. 이 세상에서 가장 작은 문은? </b><br>
+<a href="javascript:void(0)" onclick="check_answer('O')">O) 소문</a><br>
+<a href="javascript:void(0)" onclick="check_answer('X')">X) 명문</a><br>
+</div>
+
+<div id="quizScore" style="display:none">
+</div>
+
+</body>
+</html>
